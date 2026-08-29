@@ -17,7 +17,7 @@ class DatabaseConfig:
 @dataclass
 class ServerConfig:
     host: str = os.environ.get("NEXUS_HOST", "127.0.0.1")
-    port: int = int(os.environ.get("NEXUS_PORT", "8080"))
+    port: int = int(os.environ.get("NEXUS_PORT", "8090"))
     jwt_secret: str = os.environ.get("NEXUS_JWT_SECRET", "nexus-enterprise-crm-super-secret-key-2026")
     token_expiry_hours: int = 24
     cors_allow_all: bool = True

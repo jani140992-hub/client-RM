@@ -126,7 +126,7 @@ class NexusHTTPHandler(BaseHTTPRequestHandler):
         if get_config().server.debug:
             logger.debug("%s - - [%s] %s" % (self.address_string(), self.log_date_time_string(), format % args))
 
-def start_server(host: str = "127.0.0.1", port: int = 8080):
+def start_server(host: str = "127.0.0.1", port: int = 8090):
     # Ensure database is initialized and seeded
     with get_db_session() as conn:
         run_migrations(conn)

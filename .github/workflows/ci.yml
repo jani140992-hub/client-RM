@@ -25,4 +25,5 @@ jobs:
 
     - name: Run Test Suite
       run: |
+        python -c "from nexus.database.connection import get_db_session; from nexus.database.migrations import run_migrations; from nexus.database.seed_data import seed_database; conn=get_db_session().__enter__(); run_migrations(conn); seed_database(conn, 25)"
         python -m unittest discover -s tests -p "test_*.py" -v

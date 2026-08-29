@@ -5,7 +5,17 @@ Unit Tests for REST API Endpoints via Router.
 import unittest
 from nexus.api.router import get_router
 
+from nexus.database.connection import get_db_session
+from nexus.database.migrations import run_migrations
+from nexus.database.seed_data import seed_database
+
 class TestAPIEndpoints(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        with get_db_session() as conn:
+            run_migrations(conn)
+            seed_database(conn, num_clients=20)
+
     def setUp(self):
         self.router = get_router()
 

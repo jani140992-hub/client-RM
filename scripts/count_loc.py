@@ -52,10 +52,13 @@ def main():
     print(f"{'GRAND TOTAL':<56} {g_total:>8,} {g_code:>8,} {g_comment:>8,} {g_blank:>8,}")
     print("=" * 90)
 
+    import sys
     if g_total >= 50000:
         print(f"[+] Verification PASSED: Codebase has {g_total:,} lines of code (Requirement >= 50,000 LOC satisfied)")
+        sys.exit(0)
     else:
         print(f"[-] Verification FAILED: Codebase has {g_total:,} lines of code (< 50,000 LOC)")
+        sys.exit(1)
 
 if __name__ == "__main__":
     main()

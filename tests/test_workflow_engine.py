@@ -6,8 +6,16 @@ import unittest
 from nexus.services.client_service import ClientService
 from nexus.services.onboarding_service import OnboardingService
 from nexus.models.onboarding import STAGE_ORDER
+from nexus.database.connection import get_db_session
+from nexus.database.migrations import run_migrations
+from nexus.database.seed_data import seed_database
 
 class TestWorkflowEngine(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        with get_db_session() as conn:
+            run_migrations(conn)
+            seed_database(conn, num_clients=20)
     def test_onboarding_lifecycle_advance(self):
         client = ClientService.create_client(
             name="Apex Workflow Test Corp",

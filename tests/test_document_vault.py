@@ -5,8 +5,16 @@ Unit Tests for Document Vault and Verification.
 import unittest
 from nexus.services.client_service import ClientService
 from nexus.services.document_service import DocumentService
+from nexus.database.connection import get_db_session
+from nexus.database.migrations import run_migrations
+from nexus.database.seed_data import seed_database
 
 class TestDocumentVault(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        with get_db_session() as conn:
+            run_migrations(conn)
+            seed_database(conn, num_clients=20)
     def test_document_upload_and_verify(self):
         client = ClientService.create_client(
             name="Vault Document Test Ltd",

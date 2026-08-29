@@ -5,6 +5,7 @@ Unit Tests for NexusCRM Client Service.
 import unittest
 from nexus.database.connection import get_db_session
 from nexus.database.migrations import run_migrations
+from nexus.database.seed_data import seed_database
 from nexus.services.client_service import ClientService
 
 class TestClientService(unittest.TestCase):
@@ -12,6 +13,7 @@ class TestClientService(unittest.TestCase):
     def setUpClass(cls):
         with get_db_session() as conn:
             run_migrations(conn)
+            seed_database(conn, num_clients=20)
 
     def test_create_and_retrieve_client(self):
         client = ClientService.create_client(

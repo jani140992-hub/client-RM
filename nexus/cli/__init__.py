@@ -1,0 +1,3 @@
+"""
+NexusCRM CLI Package.
+"""

@@ -1,0 +1,3 @@
+"""
+NexusCRM Automated Test Suite.
+"""

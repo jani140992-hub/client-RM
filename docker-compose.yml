@@ -1,0 +1,18 @@
+version: "3.8"
+
+services:
+  nexus-crm:
+    build: .
+    container_name: nexus-crm-app
+    ports:
+      - "8080:8080"
+    environment:
+      - NEXUS_PORT=8080
+      - NEXUS_HOST=0.0.0.0
+      - NEXUS_DB_PATH=/app/data/nexus_crm.db
+    volumes:
+      - nexus-data:/app/data
+    restart: unless-stopped
+
+volumes:
+  nexus-data:

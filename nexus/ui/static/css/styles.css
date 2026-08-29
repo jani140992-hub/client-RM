@@ -1,0 +1,80 @@
+/* NexusCRM Modern Enterprise Stylesheet */
+
+@keyframes pulseSlow {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+}
+
+.animate-pulse-slow {
+    animation: pulseSlow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Active tab highlight */
+.active-tab {
+    border-color: #06b6d4 !important; /* cyan-500 */
+    color: #22d3ee !important; /* cyan-400 */
+    font-weight: 700 !important;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0f172a;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #334155;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #475569;
+}
+
+/* Risk badges */
+.badge-low {
+    background-color: rgba(16, 185, 129, 0.15);
+    color: #34d399;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.badge-medium {
+    background-color: rgba(245, 158, 11, 0.15);
+    color: #fbbf24;
+    border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.badge-high {
+    background-color: rgba(239, 68, 68, 0.15);
+    color: #f87171;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.badge-prohibited {
+    background-color: rgba(225, 29, 72, 0.25);
+    color: #fda4af;
+    border: 1px solid rgba(225, 29, 72, 0.5);
+}
+
+/* SLA badges */
+.sla-green {
+    color: #10b981;
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.sla-amber {
+    color: #f59e0b;
+    background: rgba(245, 158, 11, 0.1);
+    border: 1px solid rgba(245, 158, 11, 0.2);
+}
+
+.sla-red {
+    color: #ef4444;
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.2);
+}

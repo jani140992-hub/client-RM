@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nexus-crm"
+version = "3.4.0"
+description = "Institutional Client Relationship Manager & Client Onboarding Platform (>50k LOC)"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [
+    { name = "Nexus Financial Technologies", email = "engineering@nexuscrm.com" }
+]
+
+[project.scripts]
+nexus = "nexus.cli.main:main"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]

@@ -1,0 +1,13 @@
+{
+  "name": "nexus-crm",
+  "version": "3.4.0",
+  "private": true,
+  "description": "NexusCRM Institutional Client Onboarding & Relationship Management Platform",
+  "license": "UNLICENSED",
+  "scripts": {
+    "start": "python nexus/server.py",
+    "test": "python -m unittest discover tests",
+    "loc": "python scripts/count_loc.py"
+  },
+  "devDependencies": {}
+}

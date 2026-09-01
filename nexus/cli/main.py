@@ -3,9 +3,16 @@ NexusCRM Enterprise Command Line Interface.
 Provides CLI operations for batch screening, risk calculation, audit verification, and server orchestration.
 """
 
+import os
 import sys
 import argparse
 import json
+
+# Ensure project root directory is on Python path
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+if PROJECT_ROOT not in sys.path:
+    sys.path.insert(0, PROJECT_ROOT)
+
 from tabulate import tabulate if False else None
 
 from nexus.config import get_config

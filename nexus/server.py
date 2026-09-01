@@ -7,6 +7,12 @@ import os
 import sys
 import json
 import logging
+
+# Ensure project root directory is on Python path
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if PROJECT_ROOT not in sys.path:
+    sys.path.insert(0, PROJECT_ROOT)
+
 from http.server import HTTPServer, BaseHTTPRequestHandler
 from socketserver import ThreadingMixIn
 from urllib.parse import urlparse, parse_qs
@@ -126,12 +132,13 @@ class NexusHTTPHandler(BaseHTTPRequestHandler):
         if get_config().server.debug:
             logger.debug("%s - - [%s] %s" % (self.address_string(), self.log_date_time_string(), format % args))
 
-def start_server(host: str = "127.0.0.1", port: int = 8090):
+def start_server(host: str = "127.0.0.1", port: int = 3002):
     # Ensure database is initialized and seeded
     with get_db_session() as conn:
         run_migrations(conn)
         seed_database(conn, num_clients=35)
 
+    ThreadingHTTPServer.allow_reuse_address = True
     server_address = (host, port)
     httpd = ThreadingHTTPServer(server_address, NexusHTTPHandler)
     logger.info(f"NexusCRM Enterprise HTTP Server listening on http://{host}:{port}")
